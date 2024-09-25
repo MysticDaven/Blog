@@ -23,14 +23,25 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
-        $post = new Post();
 
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->category = $request->category;
-        $post->content = $request->content;
 
-        $post->save();
+        $request->validate([
+            'title' => 'required|min:5|max:255',
+            'slug' => 'required|unique:posts',
+            'category' => 'required',
+            'content' => 'required'
+
+        ]);
+        Post::create($request->all());
+
+        // $post = new Post();
+
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->category = $request->category;
+        // $post->content = $request->content;
+
+        // $post->save();
 
         return redirect()->route('posts.index');
     }
@@ -41,13 +52,22 @@ class PostController extends Controller
     }
 
     public function update(Request $request, Post $post){
+        $request->validate([
+            'title' => 'required|min:5|max:255',
+            'slug' => "required|unique:posts,slug,{$post->id}",
+            'category' => 'required',
+            'content' => 'required'
 
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->category = $request->category;
-        $post->content = $request->content;
+        ]);
 
-        $post->save();    
+        $post->update($request->all());
+
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->category = $request->category;
+        // $post->content = $request->content;
+
+        // $post->save();    
         
         return redirect()->route('posts.show', $post);
     }
