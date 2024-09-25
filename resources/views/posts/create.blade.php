@@ -9,6 +9,12 @@
         <br>
         <br>
         <label>
+            Slug:
+            <input type="text" name="slug">
+        </label>
+        <br>
+        <br>
+        <label>
             Categoría:
             <input type="text" name="category">
         </label>

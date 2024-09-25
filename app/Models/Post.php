@@ -29,4 +29,9 @@ class Post extends Model
             }
         );
     }
+    //--------------------NO ME FUNCIONO--------------------------------
+    // public function getRouteKeyName()
+    // {
+    //     return 'title';
+    // }    
 }
