@@ -1,3 +1,6 @@
+CURSO DE LARAVEL 11
+https://www.youtube.com/watch?v=laXc22YPGhg&list=PLZ2ovOgdI-kVtF2yQ2kiZetWWTmOQoUSG
+
 1. php artisan lang:publish
     Publishing the Language Files. Si quieres personalizar el lenguaje de los archivos Laravel que tienes, necesitas crear el directoria a través de este comando de artisan
 
@@ -12,3 +15,9 @@
 
 5. php artisan vendor:publish --tag=laravel-mail
     Publicar algunas vistas para views de correos electrónicos. Genera las plantillas que podemos editar para laravel.
+
+6. php artisan make:model Phone -m 
+    Genera un modelo para la base de datos llamado Phone, y el atributo "m" es para que me cree la migración.
+
+7. php artisan migrate
+    Ejecutar las migraciones.

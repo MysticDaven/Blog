@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Models\Comment;
+use App\Models\Phone;
 use App\Models\Post;
+use App\Models\PostC;
+use App\Models\User;
 
 //------------------COMANDO PHP ARTISAN R:L------------------------------
 // Route::get('/', HomeController::class);
@@ -19,8 +23,8 @@ use App\Models\Post;
 
 Route::resource('posts', PostController::class)
         ->names('posts');
-//--------------------------------------------------------------------------------------------
-Route::get('prueba', function () {
+//----------------------------PRUEBA-------------------------------------------------------
+//Route::get('prueba', function () {
     //--------------------CREAR UN NUEVO POST-------------------------
     // $post = new Post;
 
@@ -55,6 +59,52 @@ Route::get('prueba', function () {
 
 
 
-    $post = Post::find(1);
-    dd($post->is_active);
+    //$post = Post::find(1);
+    //dd($post->is_active);
+//});
+//-----------------------------------------------------------------------------------
+
+Route::get('prueba', function(){
+    //--------------------------CREAR USUSARIO-------------------------------
+    // User::create([
+    //     'name' => 'Daven Avila',
+    //     'email' => 'eldaven22@codersfree.com',
+    //     'password' => bcrypt('123')
+    // ]);
+    //----------------------------CREAR TELEFONO------------------------------
+    // Phone::create([
+    //     'number' => '4432001758',
+    //     'user_id' => 1
+    // ]);
+    //----------------JUNTAR AMBOS VALORES DE USUARIO Y TELEFONO------------------
+    // $user = User::where('id', 1)
+    //     ->with('phone')
+    //     ->first();
+    // return $user;
+    //-----------------INSERTAR REGISTROS DE POST----------------------
+    // PostC::create([
+    //     'title' => 'Post 2',
+    //     'content' => 'Contenido del post 2'
+    // ]);
+    // return "Post creado";
+    //------------------CREANDO LOS COMENTARIOS---------------------------
+    // Comment::create([
+    //     'content' => 'Comentario 2',
+    //     'post_c_s_id' => 1
+    // ]);
+
+    // return "Comentario creado";
+    // ----------------------------ACCEDER A LOS COMENTARIOS DE CADA POST------------
+    // $post = PostC::find(1);
+    // return $post->comments;
+    //---------------------ACCEDER A LOS POST A TRAVÉS DE UN COMENTARIO------------
+    // $comment = Comment::find(1);
+    // return $comment->postC;
+    //-----------------------CREAR COMENTARIO YA CON LA RELACIÓN ESTABLECIDA---------
+    $post = PostC::find(1);
+    $post->comments()->create([
+        'content' => 'Un comentario de prueba'
+    ]);
+
+    return "comentario creado";
 });
