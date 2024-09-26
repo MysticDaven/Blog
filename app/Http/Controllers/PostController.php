@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
+use App\Mail\PostCreatedMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -22,18 +25,18 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function store(Request $request){
+    public function store(StorePostRequest $request){
 
+        //--------------------VALIDACIONES-------------------------
+        // $request->validate([
+        //     'title' => 'required|min:5|max:255',
+        //     'slug' => 'required|unique:posts',
+        //     'category' => 'required',
+        //     'content' => 'required'
 
-        $request->validate([
-            'title' => 'required|min:5|max:255',
-            'slug' => 'required|unique:posts',
-            'category' => 'required',
-            'content' => 'required'
+        // ]);
 
-        ]);
-        Post::create($request->all());
-
+        //------------------PRIMERA FORMA DE GUARDAR DATOS---------
         // $post = new Post();
 
         // $post->title = $request->title;
@@ -42,7 +45,9 @@ class PostController extends Controller
         // $post->content = $request->content;
 
         // $post->save();
-
+        //-----------------------------------------------------------
+        $post = Post::create($request->all());
+        Mail::to('prueba@prueba.com')->send(new PostCreatedMail($post));
         return redirect()->route('posts.index');
     }
 
@@ -53,19 +58,18 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post){
         $request->validate([
-            'title' => 'required|min:5|max:255',
-            'slug' => "required|unique:posts,slug,{$post->id}",
-            'category' => 'required',
-            'content' => 'required'
-
+            // 'title' => 'required|min:5|max:255',
+            // 'slug' => "required|unique:posts,slug,{$post->id}",
+            // 'category' => 'required',
+            // 'content' => 'required'
         ]);
 
         $post->update($request->all());
 
-        // $post->title = $request->title;
-        // $post->slug = $request->slug;
-        // $post->category = $request->category;
-        // $post->content = $request->content;
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->category = $request->category;
+        $post->content = $request->content;
 
         // $post->save();    
         

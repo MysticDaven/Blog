@@ -1,0 +1,14 @@
+1. php artisan lang:publish
+    Publishing the Language Files. Si quieres personalizar el lenguaje de los archivos Laravel que tienes, necesitas crear el directoria a través de este comando de artisan
+
+2. composer require --dev laravel-lang/common
+    Sirve para instalar el paquete que nos ayudará a traducir nuestros mensajes de forma automática.
+
+3. php artisan lang:add es
+    Comando para agregar el idioma español.
+
+4. php artisan make:mail PostCreatedMail
+    Crear archivo para poder mandar correos electrónicos        
+
+5. php artisan vendor:publish --tag=laravel-mail
+    Publicar algunas vistas para views de correos electrónicos. Genera las plantillas que podemos editar para laravel.

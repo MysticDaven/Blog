@@ -1,6 +1,8 @@
 <x-app_layout>
     <h1>Formulario para crear un nuevo post</h1>
 
+    <!-- {{__('SSL Handshake Failed')}}  Traducción con JSON -->
+
     <!-- @if($errors->any())
         <div>
             <h2>Errores: </h2>
