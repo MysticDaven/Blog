@@ -21,3 +21,55 @@ https://www.youtube.com/watch?v=laXc22YPGhg&list=PLZ2ovOgdI-kVtF2yQ2kiZetWWTmOQo
 
 7. php artisan migrate
     Ejecutar las migraciones.
+
+-----------------COMANDOS DE LARAVEL-------------------------------
+CREAR CONTROLADOR
+php artisan make:controller HomeController
+
+CREAR COMPONENTES
+php artisan make:component alert2
+
+CREAR MIGRACIONES
+php artisan migrate
+
+REVIERTE LA ÚLTIMA MIGRACIÓN EJECUTADA
+php artisan migrate:rollback
+
+REVIERTE TODAS LAS MIGRACIONES
+php artisan migrate:reset
+
+REVIERTE TODAS LAS MIGRACIONES Y LUEGO LAS VUELVE A EJECUTAR
+php artisan migrate:refresh
+
+MUESTRA EL ESTADO DE CADA MIGRACIÓN
+php artisan migrate:status
+
+CREAR MIGRACIÓN
+php artisan make:migration create_categories_table
+
+MODIFICAR UNA TABLA 
+php artisan make:migration add_avatar_to_user_table
+
+CREAR MODELOS
+php artisan make:model Post
+
+CREAR LOS SEEDERS DESPUÉS DEL FRESH
+php artisan migrate:fresh --seed
+
+CREAR ARCHIVO PARA LOS SEEDERS
+php artisan make:seeder UserSeeder
+
+EJECUTAR SEEDERS
+php artisan db:seed
+
+OBSERVAR TODAS LAS RUTAS QUE HEMOS CREADO
+php artisan r:l
+
+CREAR ARCHIVO PARA PODER MANDAR CORREOS ELECTRÓNICOS
+php artisan make:mail PostCreateMail
+
+PARA OBTENER LAS VISTAS Y LOS COMPONENETES DE LOS MAIL
+php artisan vendor:publish --tag=laravel-mail
+
+CREAR UN MODELO CON SU RESPECTIVA MIGRACIÓN
+php artisan make:model Comments -m
